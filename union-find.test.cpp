@@ -1,5 +1,5 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
-#include<tree/union-find.hpp>
+#include <tree/union-find.hpp>
 using namespace std;
 int main(){
     int n,q;
