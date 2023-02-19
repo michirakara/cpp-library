@@ -1,8 +1,4 @@
 //参考 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
-#include<iostream>
-#include<utility>
-#include<vector>
-
 //Treap<TYPE> hoge;で初期化
 template<class T>
 class Treap{
