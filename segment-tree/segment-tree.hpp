@@ -12,7 +12,7 @@ struct SegmentTree{
         //モノイドの関数fと単位元id_el、で長さnのセグ木を構築します(nが2のべき乗である必要はない)
         //lを与えると初期化してくれます O(N)
         SegmentTree::n=(bits_msb(n))<<1;
-        for(int i=0;i<2*SegmentTree::n;i++)tree.push_back(id_el);
+        tree.resize(SegmentTree::n*2,id_el);
         for(int i=0;i<l.size();i++)tree[SegmentTree::n+i]=l[i];
         for(int i=SegmentTree::n-1;i>0;i--)tree[i]=func(tree[i<<1],tree[(i<<1)+1]);
     }
