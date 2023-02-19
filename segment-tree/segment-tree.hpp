@@ -8,6 +8,9 @@ struct SegmentTree{
     std::function<T(T,T)> func;
     
     SegmentTree(std::function<T(T,T)> f,T id_el,int n,std::vector<T> l={}):func(f),id_el(id_el){
+        //SegmentTree(f,id_el,n,l={})
+        //モノイドの関数fと単位元id_el、で長さnのセグ木を構築します(nが2のべき乗である必要はない)
+        //lを与えると初期化してくれます O(N)
         SegmentTree::n=(bits_msb(n))<<1;
         for(int i=0;i<2*SegmentTree::n;i++)tree.push_back(id_el);
         for(int i=0;i<l.size();i++)tree[SegmentTree::n+i]=l[i];
@@ -15,10 +18,12 @@ struct SegmentTree{
     }
 
     T at(int ind){
+        //O(1)でランダムアクセス
         return tree[n+ind];
     }
 
     void update(int ind,T x){
+        //O(log N)でt[ind]をxにする
         ind+=n;
         tree[ind]=x;
         while(ind>1){
@@ -28,6 +33,7 @@ struct SegmentTree{
     }
 
     T query(int l, int r){
+        //O(log N)でt[l:r)のクエリ
         T ret=id_el;
         l+=n;
         r+=n;
