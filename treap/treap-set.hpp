@@ -6,8 +6,9 @@ class Treap{
         T val;
         int priority;
         int cnt=1;
+        long long acc;
         Node *l, *r;
-        Node(T val,int priority):val(val),priority(priority),l(nullptr),r(nullptr){};
+        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};
     }
     *root=nullptr;
     using Tree=Node *;
@@ -16,8 +17,15 @@ class Treap{
         return t ? t->cnt : 0;
     }
 
+    long long acc(Tree t){
+        return t ? t->acc : 0;
+    }
+
     void update(Tree t){
-        if(t)t->cnt=1+cnt(t->l)+cnt(t->r);
+        if(t){
+            t->cnt=1+cnt(t->l)+cnt(t->r);
+            t->acc=t->val+acc(t->l)+acc(t->r);
+        }
     }
 
     void split(Tree t, T val, Tree& l,Tree& r){
@@ -97,11 +105,27 @@ class Treap{
         }
     }
 
+    long long query(Tree& t, int l, int r,int ni, int nl,int nr){
+        if(!t)return 0;
+        if(nr<=l || r<=nl)return 0;
+        if(l<=nl && nr<=r){
+            return t->acc;
+        }else{
+            long long ret=(l<=ni && ni<r)?t->val:0;
+            if(t->l){
+                ret+=query(t->l,l,r,ni-1-cnt(t->l->r),nl,nl+cnt(t->l));
+            }
+            if(t->r){
+                ret+=query(t->r,l,r,ni+1+cnt(t->r->l),nr-cnt(t->r),nr);
+            }
+            return ret;
+        }
+    }
+
 public:
     void insert(T val){
         //valを追加する O(log N)
         insert(root,new Node(val,rand()));
-        //update(root);
     }
 
     void erase(T val){
@@ -122,5 +146,10 @@ public:
     T operator[](int ind){
         //indexでランダムアクセス O(log N)
         return at(root,ind,cnt(root->l));
+    }
+
+    long long query(int l, int r){
+        //[l,r)の区間和 O(log N)
+        return query(root,l,r,cnt(root->l),0,root->cnt);
     }
 };
