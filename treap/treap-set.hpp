@@ -95,7 +95,7 @@ class Treap{
         }else{
             return at(t->r,ind,ni+1+cnt(t->r->l));
         }
-    }    
+    }
 
 public:
     void insert(T val){
@@ -119,7 +119,7 @@ public:
         return index(root,val,cnt(root->l));
     }
 
-    T at(int ind){
+    T operator[](int ind){
         //indexでランダムアクセス O(log N)
         return at(root,ind,cnt(root->l));
     }
