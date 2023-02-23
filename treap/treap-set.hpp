@@ -74,6 +74,18 @@ class Treap{
         }
     }
 
+    int index(Tree& t, T val, int ni){
+        if(!t){
+            return -1;
+        }else if(t->val==val){
+            return ni;
+        }else if(val<t->val){
+            return index(t->l,val,ni-1-cnt(t->l->r));
+        }else{
+            return index(t->r,val,ni+1+cnt(t->r->l));
+        }
+    }
+
     T at(Tree& t, int ind, int ni){
         if(!t)return -1;
         if(ni==ind){
@@ -102,7 +114,13 @@ public:
         return find(root,val);
     }
 
+    int index(T val){
+        //valのindexを調べる 存在しない場合は-1を返す O(log N)
+        return index(root,val,cnt(root->l));
+    }
+
     T at(int ind){
+        //indexでランダムアクセス O(log N)
         return at(root,ind,cnt(root->l));
     }
 };
