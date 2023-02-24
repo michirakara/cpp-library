@@ -176,6 +176,11 @@ public:
         return rindex(root,val,cnt(root->l));
     }
 
+    int count(T val){
+        //valの数を返す O(log N)
+        return rindex(val)-index(val)+1;
+    }
+
     T operator[](int ind){
         //indexでランダムアクセス O(log N)
         return at(root,ind,cnt(root->l));
