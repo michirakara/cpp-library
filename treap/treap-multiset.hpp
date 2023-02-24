@@ -82,11 +82,39 @@ class Treap{
         }
     }
 
+    int ind_l(Tree& t, T val, int ni){
+        if(t->l && t->l->val==val){
+            return ind_l(t->l,val,ni-1-cnt(t->l->r));
+        }else{
+            return ni;
+        }
+    }
+    
+    int ind_r(Tree& t, T val, int ni){
+        if(t->r && t->r->val==val){
+            return ind_r(t->r,val,ni+1+cnt(t->r->l));
+        }else{
+            return ni;
+        }
+    }
+
     int index(Tree& t, T val, int ni){
         if(!t){
             return -1;
         }else if(t->val==val){
-            return ni;
+            return ind_l(t,val,ni);
+        }else if(val<t->val){
+            return index(t->l,val,ni-1-cnt(t->l->r));
+        }else{
+            return index(t->r,val,ni+1+cnt(t->r->l));
+        }
+    }
+
+    int rindex(Tree& t, T val, int ni){
+        if(!t){
+            return -1;
+        }else if(t->val==val){
+            return ind_r(t,val,ni);
         }else if(val<t->val){
             return index(t->l,val,ni-1-cnt(t->l->r));
         }else{
@@ -139,8 +167,13 @@ public:
     }
 
     int index(T val){
-        //valのindexを調べる 存在しない場合は-1を返す O(log N)
+        //valの最も小さいindexを調べる 存在しない場合は-1を返す O(log N)
         return index(root,val,cnt(root->l));
+    }
+
+    int rindex(T val){
+        //valの最も大きいindexを調べる 存在しない場合は-1を返す O(log N)
+        return rindex(root,val,cnt(root->l));
     }
 
     T operator[](int ind){
