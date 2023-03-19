@@ -27,6 +27,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: treap/treap-multiset.hpp
       title: treap/treap-multiset.hpp
+    - icon: ':warning:'
+      path: treap/treap-set.hpp
+      title: treap/treap-set.hpp
   - name: union-find
     pages:
     - icon: ':heavy_check_mark:'
