@@ -10,7 +10,6 @@ int main(){
     cin>>n>>q;
 
     UnionFind uf(n);
-    
     for(int _i=0;_i<q;_i++){
         int t,u,v;
         cin>>t>>u>>v;
