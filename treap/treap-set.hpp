@@ -6,7 +6,7 @@ class Treap{
         T val;
         int priority;
         int cnt=1;
-        long long acc;
+        T acc;
         Node *l, *r;
         Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};
     }
@@ -17,7 +17,7 @@ class Treap{
         return t ? t->cnt : 0;
     }
 
-    long long acc(Tree t){
+    T acc(Tree t){
         return t ? t->acc : e();
     }
 
@@ -133,13 +133,13 @@ class Treap{
         }
     }
 
-    long long query(Tree& t, int l, int r,int ni, int nl,int nr){
+    T query(Tree& t, int l, int r,int ni, int nl,int nr){
         if(!t)return 0;
         if(nr<=l || r<=nl)return 0;
         if(l<=nl && nr<=r){
             return t->acc;
         }else{
-            long long ret=(l<=ni && ni<r)?t->val:0;
+            T ret=(l<=ni && ni<r)?t->val:0;
             if(t->l){
                 ret+=query(t->l,l,r,ni-1-cnt(t->l->r),nl,nl+cnt(t->l));
             }
@@ -180,7 +180,7 @@ public:
         return at(root,ind,cnt(root->l));
     }
 
-    long long query(int l, int r){
+    T query(int l, int r){
         //[l,r)の区間和 O(log N)
         return query(root,l,r,cnt(root->l),0,root->cnt);
     }
