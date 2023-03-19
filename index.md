@@ -31,7 +31,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: union-find/union-find.hpp
-      title: union-find/union-find.hpp
+      title: Union Find
   verificationCategories:
   - name: verify/yosupo
     pages:
