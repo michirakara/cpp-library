@@ -1,6 +1,6 @@
 //参考 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
 //Treap<TYPE> hoge;で初期化
-template<class T>
+template<class T,T(*op)(T,T),T(*e)()>
 class Treap{
     struct Node{
         T val;
@@ -18,13 +18,13 @@ class Treap{
     }
 
     long long acc(Tree t){
-        return t ? t->acc : 0;
+        return t ? t->acc : e();
     }
 
     void update(Tree t){
         if(t){
             t->cnt=1+cnt(t->l)+cnt(t->r);
-            t->acc=t->val+acc(t->l)+acc(t->r);
+            t->acc=op(t->val,op(acc(t->l),acc(t->r)));
         }
     }
 
@@ -179,6 +179,10 @@ public:
     int count(T val){
         //valの数を返す O(log N)
         return rindex(val)-index(val)+1;
+    }
+
+    int size(){
+        return cnt(root);
     }
 
     T operator[](int ind){
