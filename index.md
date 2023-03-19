@@ -24,7 +24,7 @@ data:
       title: string/rolling-hash.hpp
   - name: treap
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: treap/treap-multiset.hpp
       title: treap/treap-multiset.hpp
   - name: union-find
@@ -35,6 +35,9 @@ data:
   verificationCategories:
   - name: verify/yosupo
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/yosupo/treap-multiset_priority.test.cpp
+      title: verify/yosupo/treap-multiset_priority.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo/union-find.test.cpp
       title: verify/yosupo/union-find.test.cpp

@@ -2,21 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo/treap-multiset_priority.test.cpp
+    title: verify/yosupo/treap-multiset_priority.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
   bundledCode: "#line 1 \"treap/treap-multiset.hpp\"\n//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
-    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T>\nclass Treap{\n\
-    \    struct Node{\n        T val;\n        int priority;\n        int cnt=1;\n\
-    \        long long acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
-    \    }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n\
-    \        return t ? t->cnt : 0;\n    }\n\n    long long acc(Tree t){\n       \
-    \ return t ? t->acc : 0;\n    }\n\n    void update(Tree t){\n        if(t){\n\
-    \            t->cnt=1+cnt(t->l)+cnt(t->r);\n            t->acc=t->val+acc(t->l)+acc(t->r);\n\
+    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
+    class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
+    \  int cnt=1;\n        long long acc;\n        Node *l, *r;\n        Node(T val,int\
+    \ priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n  \
+    \  }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n  \
+    \      return t ? t->cnt : 0;\n    }\n\n    long long acc(Tree t){\n        return\
+    \ t ? t->acc : e();\n    }\n\n    void update(Tree t){\n        if(t){\n     \
+    \       t->cnt=1+cnt(t->l)+cnt(t->r);\n            t->acc=op(t->val,op(acc(t->l),acc(t->r)));\n\
     \        }\n    }\n\n    void split(Tree t, T val, Tree& l,Tree& r){\n       \
     \ if(!t){\n            l=r=nullptr;\n        }else if(val<t->val){\n         \
     \   split(t->l,val,l,t->l),r=t;\n        }else{\n            split(t->r,val,t->r,r),l=t;\n\
@@ -67,19 +71,20 @@ data:
     \ \u5B58\u5728\u3057\u306A\u3044\u5834\u5408\u306F-1\u3092\u8FD4\u3059 O(log N)\n\
     \        return rindex(root,val,cnt(root->l));\n    }\n\n    int count(T val){\n\
     \        //val\u306E\u6570\u3092\u8FD4\u3059 O(log N)\n        return rindex(val)-index(val)+1;\n\
-    \    }\n\n    T operator[](int ind){\n        //index\u3067\u30E9\u30F3\u30C0\u30E0\
-    \u30A2\u30AF\u30BB\u30B9 O(log N)\n        return at(root,ind,cnt(root->l));\n\
-    \    }\n\n    long long query(int l, int r){\n        //[l,r)\u306E\u533A\u9593\
-    \u548C O(log N)\n        return query(root,l,r,cnt(root->l),0,root->cnt);\n  \
-    \  }\n};\n"
+    \    }\n\n    int size(){\n        return cnt(root);\n    }\n\n    T operator[](int\
+    \ ind){\n        //index\u3067\u30E9\u30F3\u30C0\u30E0\u30A2\u30AF\u30BB\u30B9\
+    \ O(log N)\n        return at(root,ind,cnt(root->l));\n    }\n\n    long long\
+    \ query(int l, int r){\n        //[l,r)\u306E\u533A\u9593\u548C O(log N)\n   \
+    \     return query(root,l,r,cnt(root->l),0,root->cnt);\n    }\n};\n"
   code: "//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
-    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T>\nclass Treap{\n\
-    \    struct Node{\n        T val;\n        int priority;\n        int cnt=1;\n\
-    \        long long acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
-    \    }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n\
-    \        return t ? t->cnt : 0;\n    }\n\n    long long acc(Tree t){\n       \
-    \ return t ? t->acc : 0;\n    }\n\n    void update(Tree t){\n        if(t){\n\
-    \            t->cnt=1+cnt(t->l)+cnt(t->r);\n            t->acc=t->val+acc(t->l)+acc(t->r);\n\
+    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
+    class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
+    \  int cnt=1;\n        long long acc;\n        Node *l, *r;\n        Node(T val,int\
+    \ priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n  \
+    \  }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n  \
+    \      return t ? t->cnt : 0;\n    }\n\n    long long acc(Tree t){\n        return\
+    \ t ? t->acc : e();\n    }\n\n    void update(Tree t){\n        if(t){\n     \
+    \       t->cnt=1+cnt(t->l)+cnt(t->r);\n            t->acc=op(t->val,op(acc(t->l),acc(t->r)));\n\
     \        }\n    }\n\n    void split(Tree t, T val, Tree& l,Tree& r){\n       \
     \ if(!t){\n            l=r=nullptr;\n        }else if(val<t->val){\n         \
     \   split(t->l,val,l,t->l),r=t;\n        }else{\n            split(t->r,val,t->r,r),l=t;\n\
@@ -130,18 +135,19 @@ data:
     \ \u5B58\u5728\u3057\u306A\u3044\u5834\u5408\u306F-1\u3092\u8FD4\u3059 O(log N)\n\
     \        return rindex(root,val,cnt(root->l));\n    }\n\n    int count(T val){\n\
     \        //val\u306E\u6570\u3092\u8FD4\u3059 O(log N)\n        return rindex(val)-index(val)+1;\n\
-    \    }\n\n    T operator[](int ind){\n        //index\u3067\u30E9\u30F3\u30C0\u30E0\
-    \u30A2\u30AF\u30BB\u30B9 O(log N)\n        return at(root,ind,cnt(root->l));\n\
-    \    }\n\n    long long query(int l, int r){\n        //[l,r)\u306E\u533A\u9593\
-    \u548C O(log N)\n        return query(root,l,r,cnt(root->l),0,root->cnt);\n  \
-    \  }\n};"
+    \    }\n\n    int size(){\n        return cnt(root);\n    }\n\n    T operator[](int\
+    \ ind){\n        //index\u3067\u30E9\u30F3\u30C0\u30E0\u30A2\u30AF\u30BB\u30B9\
+    \ O(log N)\n        return at(root,ind,cnt(root->l));\n    }\n\n    long long\
+    \ query(int l, int r){\n        //[l,r)\u306E\u533A\u9593\u548C O(log N)\n   \
+    \     return query(root,l,r,cnt(root->l),0,root->cnt);\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: treap/treap-multiset.hpp
   requiredBy: []
-  timestamp: '2023-02-24 09:21:27-08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-03-19 16:18:04-07:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/yosupo/treap-multiset_priority.test.cpp
 documentation_of: treap/treap-multiset.hpp
 layout: document
 redirect_from:
