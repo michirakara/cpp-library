@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling-hash.hpp
     title: string/rolling-hash.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
@@ -27,20 +27,22 @@ data:
     \        }\n    }\n\n    ull hash(int l,int r){\n        //[l,r)\n        return\
     \ (MOD+li[r]-_mul(li[l],p[r-l]))%MOD;\n    }\n};\n#line 7 \"verify/aoj/rolling-hash.test.cpp\"\
     \n\nint main(){\n    string T,P;cin>>T>>P;\n    int base=27+rand()%50;\n    RollingHash\
-    \ t(T,base),p(P,base);\n\n    for(int i=0;i<=T.size()-P.size();i++){\n       \
-    \ if(t.hash(i,i+P.size())==p.hash(0,P.size()))cout<<i<<endl;\n    }\n}\n"
+    \ t(T,base),p(P,base);\n    if(T.size()<P.size()){\n        exit(0);\n    }\n\
+    \    for(int i=0;i<=T.size()-P.size();i++){\n        if(t.hash(i,i+P.size())==p.hash(0,P.size()))cout<<i<<endl;\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../string/rolling-hash.hpp\"\
     \n\nint main(){\n    string T,P;cin>>T>>P;\n    int base=27+rand()%50;\n    RollingHash\
-    \ t(T,base),p(P,base);\n\n    for(int i=0;i<=T.size()-P.size();i++){\n       \
-    \ if(t.hash(i,i+P.size())==p.hash(0,P.size()))cout<<i<<endl;\n    }\n}"
+    \ t(T,base),p(P,base);\n    if(T.size()<P.size()){\n        exit(0);\n    }\n\
+    \    for(int i=0;i<=T.size()-P.size();i++){\n        if(t.hash(i,i+P.size())==p.hash(0,P.size()))cout<<i<<endl;\n\
+    \    }\n}"
   dependsOn:
   - string/rolling-hash.hpp
   isVerificationFile: true
   path: verify/aoj/rolling-hash.test.cpp
   requiredBy: []
-  timestamp: '2023-03-19 23:00:02-07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-19 23:02:56-07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/rolling-hash.test.cpp
 layout: document
