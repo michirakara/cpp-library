@@ -6,6 +6,11 @@ data:
     - icon: ':warning:'
       path: algorithm/mo-algorithm.hpp
       title: algorithm/mo-algorithm.hpp
+  - name: binary-search-tree
+    pages:
+    - icon: ':x:'
+      path: binary-search-tree/implicit-treap.hpp
+      title: binary-search-tree/implicit-treap.hpp
   - name: segment-tree
     pages:
     - icon: ':warning:'
@@ -36,6 +41,11 @@ data:
       path: union-find/union-find.hpp
       title: Union Find
   verificationCategories:
+  - name: verify/aoj
+    pages:
+    - icon: ':x:'
+      path: verify/aoj/implicit-treap.test.cpp
+      title: verify/aoj/implicit-treap.test.cpp
   - name: verify/yosupo
     pages:
     - icon: ':heavy_check_mark:'
