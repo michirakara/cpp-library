@@ -19,7 +19,7 @@ data:
     - icon: ':warning:'
       path: segment-tree/lazy-segment-tree.hpp
       title: segment-tree/lazy-segment-tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: segment-tree/segment-tree.hpp
       title: segment-tree/segment-tree.hpp
   - name: string
@@ -52,6 +52,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/rolling-hash.test.cpp
       title: verify/aoj/rolling-hash.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/segment-tree.test.cpp
+      title: verify/aoj/segment-tree.test.cpp
   - name: verify/yosupo
     pages:
     - icon: ':heavy_check_mark:'
