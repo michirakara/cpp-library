@@ -24,7 +24,7 @@ data:
       title: segment-tree/segment-tree.hpp
   - name: string
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: string/rolling-hash.hpp
       title: string/rolling-hash.hpp
   - name: treap
@@ -46,6 +46,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/implicit-treap.test.cpp
       title: verify/aoj/implicit-treap.test.cpp
+    - icon: ':x:'
+      path: verify/aoj/rolling-hash.test.cpp
+      title: verify/aoj/rolling-hash.test.cpp
   - name: verify/yosupo
     pages:
     - icon: ':heavy_check_mark:'

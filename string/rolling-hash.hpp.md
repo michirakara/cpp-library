@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/aoj/rolling-hash.test.cpp
+    title: verify/aoj/rolling-hash.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"string/rolling-hash.hpp\"\n#include<iostream>\n#include<vector>\n\
@@ -35,8 +38,9 @@ data:
   path: string/rolling-hash.hpp
   requiredBy: []
   timestamp: '2023-02-15 18:07:32-08:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/aoj/rolling-hash.test.cpp
 documentation_of: string/rolling-hash.hpp
 layout: document
 redirect_from:
