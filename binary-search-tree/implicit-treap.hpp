@@ -1,16 +1,18 @@
 //参考 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
 //Treap<T,op,e,F,mapping,composition,id> hoge;で初期化
+#include <algorithm>
+#include <vector>
+
 template<class T,T(*op)(T,T),T(*e)(),class F,T(*mapping)(F f,T x),F(*composition)(F f,F g),F(*id)()>
 class ImplicitTreap{
     struct Node{
-        T val;
+        T val,acc=e();
         int priority;
         int cnt=1;
-        T acc;
         F lazy=id();
         bool rev=false;
         Node *l, *r;
-        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};
+        Node(T val,int priority):val(val),priority(priority),l(nullptr),r(nullptr){};
     }
     *root=nullptr;
     using Tree=Node *;
@@ -47,12 +49,12 @@ class ImplicitTreap{
                 t->r->acc=mapping(t->lazy,t->r->acc);
             }
             t->val=mapping(t->lazy,t->val);
-            t->lazy=0;
+            t->lazy=id();
         }
         update(t);
     }
 
-    void split(Tree t, T key, Tree& l,Tree& r){
+    void split(Tree t, int key, Tree& l,Tree& r){
         if(!t){
             l=r=nullptr;
             return;
@@ -65,6 +67,13 @@ class ImplicitTreap{
             split(t->r,key-implicit_key,t->r,r),l=t;
         }
         update(t);
+    }
+
+    void insert(Tree& t,int key,Tree item){
+        Tree t1,t2;
+        split(t,key,t1,t2);
+        merge(t1,t1,item);
+        merge(t,t1,t2);
     }
 
     void merge(Tree& t, Tree l, Tree r){
@@ -80,29 +89,11 @@ class ImplicitTreap{
         update(t);
     }
 
-    void insert(Tree& t,int key,Tree item){
-        Tree t1,t2;
-        split(t,key,t1,t2);
-        merge(t1,t1,item);
-        merge(t,t1,t2);
-    }
-
     void erase(Tree& t,int key){
         Tree t1,t2,t3;
         split(t,key+1,t1,t2);
         split(t1,key,t1,t3);
         merge(t,t1,t2);
-    }
-
-    T at(Tree& t, int ind, int ni){
-        if(!t)return -1;
-        if(ni==ind){
-            return t->val;
-        }else if(ind<ni){
-            return at(t->l,ind,ni-1-cnt(t->l->r));
-        }else{
-            return at(t->r,ind,ni+1+cnt(t->r->l));
-        }
     }
 
     T prod(Tree t,int l,int r){
@@ -141,7 +132,23 @@ class ImplicitTreap{
         reverse(t,l+r-m,r);
     }
 
+    void dump(Tree t) {
+        if (!t) return;
+        pushdown(t);
+        dump(t->l);
+        cout << t->val << " ";
+        dump(t->r);
+    }
+
 public:
+    ImplicitTreap() {}
+    ImplicitTreap(std::vector<T> as){
+        std::reverse(as.begin(),as.end());
+        for(T a:as){
+            insert(0,a);
+        }
+    }
+
     void insert(int pos,T val){
         //valをposの場所に追加する O(log N)
         insert(root,pos,new Node(val,rand()));
@@ -156,9 +163,14 @@ public:
         return cnt(root);
     }
 
-    T operator[](int ind){
-        //indexでランダムアクセス O(log N)
-        return prod(root,ind,ind+1);
+    T operator[](int pos) {
+        Tree t1, t2, t3;
+        split(root, pos + 1, t1, t2);
+        split(t1, pos, t1, t3);
+        T ret = t3->acc;
+        merge(t1, t1, t3);
+        merge(root, t1, t2);
+        return ret;
     }
 
     T prod(int l, int r){
@@ -176,5 +188,9 @@ public:
 
     void rotate(int l,int m,int r){
         rotate(root,l,m,r);
+    }
+
+    void dump(){
+        dump(root);cout<<endl;
     }
 };
