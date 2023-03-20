@@ -8,7 +8,7 @@ data:
       title: algorithm/mo-algorithm.hpp
   - name: binary-search-tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: binary-search-tree/implicit-treap.hpp
       title: binary-search-tree/implicit-treap.hpp
   - name: segment-tree
@@ -43,7 +43,7 @@ data:
   verificationCategories:
   - name: verify/aoj
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/implicit-treap.test.cpp
       title: verify/aoj/implicit-treap.test.cpp
   - name: verify/yosupo
