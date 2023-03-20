@@ -12,7 +12,7 @@ int main(){
     while(Q--){
         int com,x,y;cin>>com>>x>>y;
 
-        if(com==0)bit.add(x,y);
-        else cout<<bit.sum(x,y+1)<<endl;
+        if(com==0)bit.add(x-1,y);
+        else cout<<bit.sum(x-1,y)<<endl;
     }
 }
