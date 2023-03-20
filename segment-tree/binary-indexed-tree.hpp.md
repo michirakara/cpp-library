@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj/binary-indexed-tree.test.cpp
     title: verify/aoj/binary-indexed-tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"segment-tree/binary-indexed-tree.hpp\"\n#include<vector>\n\
@@ -45,7 +45,7 @@ data:
   path: segment-tree/binary-indexed-tree.hpp
   requiredBy: []
   timestamp: '2023-02-18 21:45:20-08:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj/binary-indexed-tree.test.cpp
 documentation_of: segment-tree/binary-indexed-tree.hpp

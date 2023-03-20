@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: segment-tree/binary-indexed-tree.hpp
     title: segment-tree/binary-indexed-tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
@@ -32,20 +32,20 @@ data:
     \        i++;\n        while(i<=size){\n            tree[i]+=x;\n            i+=i&-i;\n\
     \        }\n    }\n};\n#line 7 \"verify/aoj/binary-indexed-tree.test.cpp\"\n\n\
     int main(){\n    int N,Q;cin>>N>>Q;\n    BinaryIndexedTree bit(N);\n\n    while(Q--){\n\
-    \        int com,x,y;cin>>com>>x>>y;\n\n        if(com==0)bit.add(x,y);\n    \
-    \    else cout<<bit.sum(x,y+1)<<endl;\n    }\n}\n"
+    \        int com,x,y;cin>>com>>x>>y;\n\n        if(com==0)bit.add(x-1,y);\n  \
+    \      else cout<<bit.sum(x-1,y)<<endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../segment-tree/binary-indexed-tree.hpp\"\
     \n\nint main(){\n    int N,Q;cin>>N>>Q;\n    BinaryIndexedTree bit(N);\n\n   \
-    \ while(Q--){\n        int com,x,y;cin>>com>>x>>y;\n\n        if(com==0)bit.add(x,y);\n\
-    \        else cout<<bit.sum(x,y+1)<<endl;\n    }\n}"
+    \ while(Q--){\n        int com,x,y;cin>>com>>x>>y;\n\n        if(com==0)bit.add(x-1,y);\n\
+    \        else cout<<bit.sum(x-1,y)<<endl;\n    }\n}"
   dependsOn:
   - segment-tree/binary-indexed-tree.hpp
   isVerificationFile: true
   path: verify/aoj/binary-indexed-tree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-19 23:15:52-07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-19 23:21:06-07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/binary-indexed-tree.test.cpp
 layout: document
