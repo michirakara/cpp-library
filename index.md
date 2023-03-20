@@ -13,7 +13,7 @@ data:
       title: binary-search-tree/implicit-treap.hpp
   - name: segment-tree
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: segment-tree/binary-indexed-tree.hpp
       title: segment-tree/binary-indexed-tree.hpp
     - icon: ':warning:'
@@ -43,6 +43,9 @@ data:
   verificationCategories:
   - name: verify/aoj
     pages:
+    - icon: ':x:'
+      path: verify/aoj/binary-indexed-tree.test.cpp
+      title: verify/aoj/binary-indexed-tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj/implicit-treap.test.cpp
       title: verify/aoj/implicit-treap.test.cpp
