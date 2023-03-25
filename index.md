@@ -11,6 +11,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: binary-search-tree/implicit-treap.hpp
       title: binary-search-tree/implicit-treap.hpp
+  - name: graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: graph/dijkstra.hpp
+      title: graph/dijkstra.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/graph-template.hpp
+      title: graph/graph-template.hpp
   - name: segment-tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -46,6 +54,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/binary-indexed-tree.test.cpp
       title: verify/aoj/binary-indexed-tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/dijkstra.test.cpp
+      title: verify/aoj/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj/implicit-treap.test.cpp
       title: verify/aoj/implicit-treap.test.cpp
