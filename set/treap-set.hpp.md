@@ -9,7 +9,7 @@ data:
   attributes:
     links:
     - https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
-  bundledCode: "#line 1 \"treap/treap-set.hpp\"\n//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
+  bundledCode: "#line 1 \"set/treap-set.hpp\"\n//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
     //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
     class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
     \  int cnt=1;\n        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
@@ -129,15 +129,15 @@ data:
     };"
   dependsOn: []
   isVerificationFile: false
-  path: treap/treap-set.hpp
+  path: set/treap-set.hpp
   requiredBy: []
-  timestamp: '2023-03-19 16:34:31-07:00'
+  timestamp: '2023-03-25 17:11:32-07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: treap/treap-set.hpp
+documentation_of: set/treap-set.hpp
 layout: document
 redirect_from:
-- /library/treap/treap-set.hpp
-- /library/treap/treap-set.hpp.html
-title: treap/treap-set.hpp
+- /library/set/treap-set.hpp
+- /library/set/treap-set.hpp.html
+title: set/treap-set.hpp
 ---

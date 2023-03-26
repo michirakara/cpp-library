@@ -30,19 +30,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment-tree/segment-tree.hpp
       title: segment-tree/segment-tree.hpp
+  - name: set
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: set/treap-multiset.hpp
+      title: set/treap-multiset.hpp
+    - icon: ':warning:'
+      path: set/treap-set.hpp
+      title: set/treap-set.hpp
   - name: string
     pages:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash.hpp
       title: string/rolling-hash.hpp
-  - name: treap
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: treap/treap-multiset.hpp
-      title: treap/treap-multiset.hpp
-    - icon: ':warning:'
-      path: treap/treap-set.hpp
-      title: treap/treap-set.hpp
   - name: union-find
     pages:
     - icon: ':heavy_check_mark:'

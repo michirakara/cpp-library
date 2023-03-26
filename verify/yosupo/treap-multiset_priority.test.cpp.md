@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: treap/treap-multiset.hpp
-    title: treap/treap-multiset.hpp
+    path: set/treap-multiset.hpp
+    title: set/treap-multiset.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/double_ended_priority_queue
   bundledCode: "#line 1 \"verify/yosupo/treap-multiset_priority.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\n\n\
-    #include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"treap/treap-multiset.hpp\"\
+    #include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"set/treap-multiset.hpp\"\
     \n//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
     //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
     class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
@@ -89,7 +89,7 @@ data:
     \            t.erase(t[0]);\n        }else{\n            cout<<t[t.size()-1]<<endl;\n\
     \            t.erase(t[t.size()-1]);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../treap/treap-multiset.hpp\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../set/treap-multiset.hpp\"\
     \n\nlong long op(long long a,long long b){return a+b;};\nlong long e(){return\
     \ (long long)0;};\n\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    vector<int>\
     \ s(n);\n    for(int i=0;i<n;i++)cin>>s[i];\n\n    Treap<long long,op,e> t;\n\
@@ -99,11 +99,11 @@ data:
     \            t.erase(t[0]);\n        }else{\n            cout<<t[t.size()-1]<<endl;\n\
     \            t.erase(t[t.size()-1]);\n        }\n    }\n}\n"
   dependsOn:
-  - treap/treap-multiset.hpp
+  - set/treap-multiset.hpp
   isVerificationFile: true
   path: verify/yosupo/treap-multiset_priority.test.cpp
   requiredBy: []
-  timestamp: '2023-03-19 16:34:31-07:00'
+  timestamp: '2023-03-25 17:11:32-07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo/treap-multiset_priority.test.cpp
