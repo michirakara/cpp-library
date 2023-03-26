@@ -10,9 +10,11 @@ data:
     links:
     - https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
   bundledCode: "#line 1 \"set/treap-set.hpp\"\n//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
-    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
-    class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
-    \  int cnt=1;\n        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
+    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\nlong long treap_default_op(long long\
+    \ a,long long b){return a+b;};\nlong long treap_default_e(){return 0;};\ntemplate<class\
+    \ T=long long,T(*op)(T,T)=treap_default_op,T(*e)()=treap_default_e>\nclass Treap{\n\
+    \    struct Node{\n        T val;\n        int priority;\n        int cnt=1;\n\
+    \        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
     \    }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n\
     \        return t ? t->cnt : 0;\n    }\n\n    T acc(Tree t){\n        return t\
     \ ? t->acc : e();\n    }\n\n    void update(Tree t){\n        if(t){\n       \
@@ -69,9 +71,11 @@ data:
     \ O(log N)\n        return query(root,l,r,cnt(root->l),0,root->cnt);\n    }\n\
     };\n"
   code: "//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
-    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
-    class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
-    \  int cnt=1;\n        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
+    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\nlong long treap_default_op(long long\
+    \ a,long long b){return a+b;};\nlong long treap_default_e(){return 0;};\ntemplate<class\
+    \ T=long long,T(*op)(T,T)=treap_default_op,T(*e)()=treap_default_e>\nclass Treap{\n\
+    \    struct Node{\n        T val;\n        int priority;\n        int cnt=1;\n\
+    \        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
     \    }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n\
     \        return t ? t->cnt : 0;\n    }\n\n    T acc(Tree t){\n        return t\
     \ ? t->acc : e();\n    }\n\n    void update(Tree t){\n        if(t){\n       \
@@ -131,7 +135,7 @@ data:
   isVerificationFile: false
   path: set/treap-set.hpp
   requiredBy: []
-  timestamp: '2023-03-25 17:11:32-07:00'
+  timestamp: '2023-03-25 17:32:36-07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: set/treap-set.hpp
