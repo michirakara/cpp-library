@@ -18,7 +18,9 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#line 1 \"set/treap-multiset.hpp\"\
     \n//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
-    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
+    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\n#line 4 \"set/treap-multiset.hpp\"\
+    \nlong long treap_default_op(long long a,long long b){return a+b;};\nlong long\
+    \ treap_default_e(){return 0;};\ntemplate<class T=long long,T(*op)(T,T)=treap_default_op,T(*e)()=treap_default_e>\n\
     class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
     \  int cnt=1;\n        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
     \    }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n\
@@ -80,30 +82,28 @@ data:
     \ O(log N)\n        return at(root,ind,cnt(root->l));\n    }\n\n    T query(int\
     \ l, int r){\n        //[l,r)\u306E\u533A\u9593\u548C O(log N)\n        return\
     \ query(root,l,r,cnt(root->l),0,root->cnt);\n    }\n};\n#line 7 \"verify/yosupo/treap-multiset_priority.test.cpp\"\
-    \n\nlong long op(long long a,long long b){return a+b;};\nlong long e(){return\
-    \ (long long)0;};\n\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    vector<int>\
-    \ s(n);\n    for(int i=0;i<n;i++)cin>>s[i];\n\n    Treap<long long,op,e> t;\n\
-    \    for(int i=0;i<n;i++)t.insert(s[i]);\n    \n    for(int i=0;i<q;i++){\n  \
-    \      int qi;cin>>qi;\n        if(qi==0){\n            int x;\n            cin>>x;\n\
-    \            t.insert(x);\n        }else if(qi==1){\n            cout<<t[0]<<endl;\n\
-    \            t.erase(t[0]);\n        }else{\n            cout<<t[t.size()-1]<<endl;\n\
-    \            t.erase(t[t.size()-1]);\n        }\n    }\n}\n"
+    \n\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    vector<int> s(n);\n    for(int\
+    \ i=0;i<n;i++)cin>>s[i];\n\n    Treap<> t;\n    for(int i=0;i<n;i++)t.insert(s[i]);\n\
+    \    \n    for(int i=0;i<q;i++){\n        int qi;cin>>qi;\n        if(qi==0){\n\
+    \            int x;\n            cin>>x;\n            t.insert(x);\n        }else\
+    \ if(qi==1){\n            cout<<t[0]<<endl;\n            t.erase(t[0]);\n    \
+    \    }else{\n            cout<<t[t.size()-1]<<endl;\n            t.erase(t[t.size()-1]);\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../set/treap-multiset.hpp\"\
-    \n\nlong long op(long long a,long long b){return a+b;};\nlong long e(){return\
-    \ (long long)0;};\n\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    vector<int>\
-    \ s(n);\n    for(int i=0;i<n;i++)cin>>s[i];\n\n    Treap<long long,op,e> t;\n\
-    \    for(int i=0;i<n;i++)t.insert(s[i]);\n    \n    for(int i=0;i<q;i++){\n  \
-    \      int qi;cin>>qi;\n        if(qi==0){\n            int x;\n            cin>>x;\n\
-    \            t.insert(x);\n        }else if(qi==1){\n            cout<<t[0]<<endl;\n\
-    \            t.erase(t[0]);\n        }else{\n            cout<<t[t.size()-1]<<endl;\n\
-    \            t.erase(t[t.size()-1]);\n        }\n    }\n}\n"
+    \n\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    vector<int> s(n);\n    for(int\
+    \ i=0;i<n;i++)cin>>s[i];\n\n    Treap<> t;\n    for(int i=0;i<n;i++)t.insert(s[i]);\n\
+    \    \n    for(int i=0;i<q;i++){\n        int qi;cin>>qi;\n        if(qi==0){\n\
+    \            int x;\n            cin>>x;\n            t.insert(x);\n        }else\
+    \ if(qi==1){\n            cout<<t[0]<<endl;\n            t.erase(t[0]);\n    \
+    \    }else{\n            cout<<t[t.size()-1]<<endl;\n            t.erase(t[t.size()-1]);\n\
+    \        }\n    }\n}\n"
   dependsOn:
   - set/treap-multiset.hpp
   isVerificationFile: true
   path: verify/yosupo/treap-multiset_priority.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 17:11:32-07:00'
+  timestamp: '2023-03-25 17:28:30-07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo/treap-multiset_priority.test.cpp

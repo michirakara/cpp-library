@@ -13,7 +13,9 @@ data:
     links:
     - https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
   bundledCode: "#line 1 \"set/treap-multiset.hpp\"\n//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
-    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
+    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\n#include <algorithm>\nlong long treap_default_op(long\
+    \ long a,long long b){return a+b;};\nlong long treap_default_e(){return 0;};\n\
+    template<class T=long long,T(*op)(T,T)=treap_default_op,T(*e)()=treap_default_e>\n\
     class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
     \  int cnt=1;\n        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
     \    }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n\
@@ -76,7 +78,9 @@ data:
     \ l, int r){\n        //[l,r)\u306E\u533A\u9593\u548C O(log N)\n        return\
     \ query(root,l,r,cnt(root->l),0,root->cnt);\n    }\n};\n"
   code: "//\u53C2\u8003 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
-    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\ntemplate<class T,T(*op)(T,T),T(*e)()>\n\
+    //Treap<TYPE> hoge;\u3067\u521D\u671F\u5316\n#include <algorithm>\nlong long treap_default_op(long\
+    \ long a,long long b){return a+b;};\nlong long treap_default_e(){return 0;};\n\
+    template<class T=long long,T(*op)(T,T)=treap_default_op,T(*e)()=treap_default_e>\n\
     class Treap{\n    struct Node{\n        T val;\n        int priority;\n      \
     \  int cnt=1;\n        T acc;\n        Node *l, *r;\n        Node(T val,int priority):val(val),priority(priority),acc(val),l(nullptr),r(nullptr){};\n\
     \    }\n    *root=nullptr;\n    using Tree=Node *;\n\n    int cnt(Tree t) {\n\
@@ -142,7 +146,7 @@ data:
   isVerificationFile: false
   path: set/treap-multiset.hpp
   requiredBy: []
-  timestamp: '2023-03-25 17:11:32-07:00'
+  timestamp: '2023-03-25 17:28:30-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo/treap-multiset_priority.test.cpp
