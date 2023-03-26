@@ -1,6 +1,9 @@
 //参考 https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
 //Treap<TYPE> hoge;で初期化
-template<class T,T(*op)(T,T),T(*e)()>
+#include <algorithm>
+long long treap_default_op(long long a,long long b){return a+b;};
+long long treap_default_e(){return 0;};
+template<class T=long long,T(*op)(T,T)=treap_default_op,T(*e)()=treap_default_e>
 class Treap{
     struct Node{
         T val;

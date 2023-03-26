@@ -5,9 +5,6 @@ using namespace std;
 
 #include "../../set/treap-multiset.hpp"
 
-long long op(long long a,long long b){return a+b;};
-long long e(){return (long long)0;};
-
 int main(){
     int n,q;
     cin>>n>>q;
@@ -15,7 +12,7 @@ int main(){
     vector<int> s(n);
     for(int i=0;i<n;i++)cin>>s[i];
 
-    Treap<long long,op,e> t;
+    Treap<> t;
     for(int i=0;i<n;i++)t.insert(s[i]);
     
     for(int i=0;i<q;i++){
