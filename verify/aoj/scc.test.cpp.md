@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"verify/aoj/scc.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C
+  bundledCode: "#line 1 \"verify/aoj/scc.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#line 3 \"graph/graph-template.hpp\"\
     \ntemplate<class T>\nstruct edge{\n    int from,to;\n    T cost;\n    \n    edge(int\
     \ to,T cost):from(-1),to(to),cost(cost){}\n    edge(int from,int to,T cost):from(from),to(to),cost(cost){}\n\
@@ -59,7 +59,7 @@ data:
     \    UnweightedGraph G=input_graph(V,E,true,false);\n    SCC scc;scc.build(G);\n\
     \    int Q;\n    cin>>Q;\n    while(Q--){\n        int u,v;\n        cin>>u>>v;\n\
     \        cout<<(scc[u]==scc[v]?1:0)<<endl;\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../graph/scc.hpp\"\
     \n\nint main(){\n    int V,E;\n    cin>>V>>E;\n    UnweightedGraph G=input_graph(V,E,true,false);\n\
     \    SCC scc;scc.build(G);\n    int Q;\n    cin>>Q;\n    while(Q--){\n       \
@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: verify/aoj/scc.test.cpp
   requiredBy: []
-  timestamp: '2023-04-03 22:07:37-07:00'
+  timestamp: '2023-04-03 22:10:14-07:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/aoj/scc.test.cpp
