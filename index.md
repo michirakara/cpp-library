@@ -16,9 +16,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/graph-template.hpp
       title: graph/graph-template.hpp
+    - icon: ':x:'
+      path: graph/scc.hpp
+      title: graph/scc.hpp
   - name: segment-tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -63,6 +66,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/rolling-hash.test.cpp
       title: verify/aoj/rolling-hash.test.cpp
+    - icon: ':x:'
+      path: verify/aoj/scc.test.cpp
+      title: verify/aoj/scc.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj/segment-tree.test.cpp
       title: verify/aoj/segment-tree.test.cpp
