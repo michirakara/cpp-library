@@ -136,7 +136,7 @@ class ImplicitTreap{
         if (!t) return;
         pushdown(t);
         dump(t->l);
-        cout << t->val << " ";
+        std::cout << t->val << " ";
         dump(t->r);
     }
 
@@ -191,6 +191,6 @@ public:
     }
 
     void dump(){
-        dump(root);cout<<endl;
+        dump(root);std::cout<<std::endl;
     }
 };
