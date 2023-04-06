@@ -35,7 +35,7 @@ class ImplicitTreap{
     void pushdown(Tree t){
         if(t && t->rev){
             t->rev=false;
-            swap(t->l,t->r);
+            std::swap(t->l,t->r);
             if(t->l)t->l->rev^=1;
             if(t->r)t->r->rev^=1;
         }
