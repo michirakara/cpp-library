@@ -87,6 +87,6 @@ struct HeavyLightDecomposition{
     }
 
     int lcu(int u,int v){
-        return q(u,v).back().first;
+        return hld[q(u,v).back().first];
     }
 };
