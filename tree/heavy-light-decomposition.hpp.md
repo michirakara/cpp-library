@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/graph-template.hpp
     title: graph/graph-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: segment-tree/segment-tree.hpp
-    title: segment-tree/segment-tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -32,32 +29,12 @@ data:
     \    for(int i=0;i<M;i++){\n        int from,to;T cost;std::cin>>from>>to>>cost;\n\
     \        if(one_origin)from--,to--;\n        ret[from].emplace_back(from,to,cost);\n\
     \        if(!directed)ret[to].emplace_back(to,from,cost);\n    }\n    return ret;\n\
-    };\n#line 2 \"segment-tree/segment-tree.hpp\"\n#include<functional>\ntemplate\
-    \ <class T,T(*op)(T,T),T(*e)()>\nstruct SegmentTree{\n    int n;\n    std::vector<T>\
-    \ tree;\n    \n    SegmentTree(int n,std::vector<T> l={}){\n        //SegmentTree<T,op,e>(n,l={})\n\
-    \        SegmentTree::n=(bits_msb(n))<<1;\n        tree.resize(SegmentTree::n*2,e());\n\
-    \        for(int i=0;i<(int)l.size();i++)tree[SegmentTree::n+i]=l[i];\n      \
-    \  for(int i=SegmentTree::n-1;i>0;i--)tree[i]=op(tree[i<<1],tree[(i<<1)+1]);\n\
-    \    }\n\n    T at(int ind){\n        //O(1)\u3067\u30E9\u30F3\u30C0\u30E0\u30A2\
-    \u30AF\u30BB\u30B9\n        return tree.at(n+ind);\n    }\n\n    T operator[](int\
-    \ pos){\n        return tree[n+pos];\n    }\n\n    void set(int ind,T x){\n  \
-    \      //O(log N)\u3067t[ind]\u3092x\u306B\u3059\u308B\n        ind+=n;\n    \
-    \    tree[ind]=x;\n        while(ind>1){\n            tree[ind>>1]=op(tree[ind],tree[ind^1]);\n\
-    \            ind>>=1;\n        }\n    }\n\n    T prod(int l, int r){\n       \
-    \ //O(log N)\u3067t[l:r)\u306E\u30AF\u30A8\u30EA\n        T ret=e();\n       \
-    \ l+=n;\n        r+=n;\n        while(l<r){\n            if(l&1){\n          \
-    \      ret=op(ret,tree[l]);l++;\n            }\n            if(r&1){\n       \
-    \         ret=op(ret,tree[r-1]);\n            }\n            r>>=1;\n        \
-    \    l>>=1;\n        }\n        return ret;\n    }\n\nprivate:\n    unsigned int\
-    \ bits_msb( unsigned int v ){\n    v = v | (v >>  1);\n    v = v | (v >>  2);\n\
-    \    v = v | (v >>  4);\n    v = v | (v >>  8);\n    v = v | (v >> 16);\n    return\
-    \ v ^ (v >> 1);\n    }\n};\n#line 3 \"tree/heavy-light-decomposition.hpp\"\n\n\
-    #line 5 \"tree/heavy-light-decomposition.hpp\"\n#include<utility>\n#include<algorithm>\n\
-    \ntemplate<class S,S(*op)(S,S),S(*e)()>\nstruct HeavyLightDecomposition{\n   \
-    \ UnweightedGraph T;\n    SegmentTree<S,op,e> sg;\n    int N;\n    std::vector<int>\
-    \ parent,siz_t,depth,shallow,hld,rev_hld;\n    int dfs(int now,int prev){\n  \
-    \      parent[now]=prev;\n        depth[now]=prev!=-1?depth[prev]+1:0;\n     \
-    \   int siz=1;\n        for(int i:T[now]){\n            if(i==prev)continue;\n\
+    };\n#line 2 \"tree/heavy-light-decomposition.hpp\"\n\n#line 4 \"tree/heavy-light-decomposition.hpp\"\
+    \n#include<utility>\n#include<algorithm>\n#include<functional>\n\ntemplate<class\
+    \ S>\nstruct HeavyLightDecomposition{\n    UnweightedGraph T;\n    int N;\n  \
+    \  std::vector<int> parent,siz_t,depth,shallow,hld,rev_hld;\n    int dfs(int now,int\
+    \ prev){\n        parent[now]=prev;\n        depth[now]=prev!=-1?depth[prev]+1:0;\n\
+    \        int siz=1;\n        for(int i:T[now]){\n            if(i==prev)continue;\n\
     \            siz+=dfs(i,now);\n        }\n        siz_t[now]=siz;\n        return\
     \ siz;\n    }\n    void dfs2(int now,int prev,bool new_path){\n        rev_hld[now]=hld.size();\n\
     \        hld.push_back(now);\n        shallow[now]=new_path?now:shallow[prev];\n\
@@ -65,28 +42,27 @@ data:
     \ && siz_t[i]>ma){\n                ma=siz_t[i],ma_idx=i;\n            }\n   \
     \     }\n        if(ma_idx==-1)return;\n        dfs2(ma_idx,now,false);\n\n  \
     \      for(int i:T[now]){\n            if(i!=ma_idx && i!=prev)dfs2(i,now,true);\n\
-    \        }\n    }\n    HeavyLightDecomposition(UnweightedGraph &T):T(T),sg(SegmentTree<S,op,e>(T.size())){\n\
-    \        N=HeavyLightDecomposition::T.size();\n        parent.resize(N);\n   \
-    \     siz_t.resize(N);\n        depth.resize(N);\n        shallow.resize(N);\n\
-    \        rev_hld.resize(N);\n        dfs(0,-1);\n        dfs2(0,-1,1);\n    }\n\
-    \n    std::vector<std::pair<int,int>> q(int u,int v){\n        std::vector<std::pair<int,int>>\
+    \        }\n    }\n    HeavyLightDecomposition(UnweightedGraph &T):T(T){\n   \
+    \     N=HeavyLightDecomposition::T.size();\n        parent.resize(N);\n      \
+    \  siz_t.resize(N);\n        depth.resize(N);\n        shallow.resize(N);\n  \
+    \      rev_hld.resize(N);\n        dfs(0,-1);\n        dfs2(0,-1,1);\n    }\n\n\
+    \    std::vector<std::pair<int,int>> q(int u,int v){\n        std::vector<std::pair<int,int>>\
     \ ret;\n        while(shallow[u]!=shallow[v]){\n            if(depth[shallow[u]]<=depth[shallow[v]]){\n\
     \                ret.push_back({rev_hld[shallow[v]],rev_hld[v]});\n          \
     \      v=parent[shallow[v]];\n            }else{\n                ret.push_back({rev_hld[shallow[u]],rev_hld[u]});\n\
     \                u=parent[shallow[u]];\n            }\n        }\n        ret.push_back({std::min(rev_hld[u],rev_hld[v]),std::max(rev_hld[u],rev_hld[v])});\n\
-    \        return ret;\n    }\n\n    void set(int u,int v,S x){\n        if(parent[v]==u){\n\
-    \            sg.set(rev_hld[v],x);\n        }else{\n            sg.set(rev_hld[u],x);\n\
-    \        }\n    }\n\n    S query(int u,int v){\n        std::vector<std::pair<int,int>>\
-    \ que=q(u,v);\n        S ret=e();\n        for(int i=0;i<que.size()-1;i++){\n\
-    \            ret=op(ret,sg.prod(que[i].first,que[i].second+1));\n        }\n \
-    \       if(que.back().first!=N-1 && que.back().first!=que.back().second){\n  \
-    \          ret=op(ret,sg.prod(que.back().first+1,que.back().second+1));\n    \
-    \    }\n        return ret;\n    }\n\n    int lcu(int u,int v){\n        return\
-    \ hld[q(u,v).back().first];\n    }\n};\n"
-  code: "#include \"../graph/graph-template.hpp\"\n#include \"../segment-tree/segment-tree.hpp\"\
-    \n\n#include<vector>\n#include<utility>\n#include<algorithm>\n\ntemplate<class\
-    \ S,S(*op)(S,S),S(*e)()>\nstruct HeavyLightDecomposition{\n    UnweightedGraph\
-    \ T;\n    SegmentTree<S,op,e> sg;\n    int N;\n    std::vector<int> parent,siz_t,depth,shallow,hld,rev_hld;\n\
+    \        return ret;\n    }\n\n    void set(int u,int v,S x,void(*f)(int,S)){\n\
+    \        if(parent[v]==u){\n            f(rev_hld[v],x);\n        }else{\n   \
+    \         f(rev_hld[u],x);\n        }\n    }\n\n    S query(int u,int v,S id,void(*f)(int,int)){\n\
+    \        std::vector<std::pair<int,int>> que=q(u,v);\n        S ret=id;\n    \
+    \    for(int i=0;i<que.size()-1;i++){\n            ret=op(ret,f(que[i].first,que[i].second+1));\n\
+    \        }\n        if(que.back().first!=N-1 && que.back().first!=que.back().second){\n\
+    \            ret=op(ret,f(que.back().first+1,que.back().second+1));\n        }\n\
+    \        return ret;\n    }\n\n    int lcu(int u,int v){\n        return hld[q(u,v).back().first];\n\
+    \    }\n};\n"
+  code: "#include \"../graph/graph-template.hpp\"\n\n#include<vector>\n#include<utility>\n\
+    #include<algorithm>\n#include<functional>\n\ntemplate<class S>\nstruct HeavyLightDecomposition{\n\
+    \    UnweightedGraph T;\n    int N;\n    std::vector<int> parent,siz_t,depth,shallow,hld,rev_hld;\n\
     \    int dfs(int now,int prev){\n        parent[now]=prev;\n        depth[now]=prev!=-1?depth[prev]+1:0;\n\
     \        int siz=1;\n        for(int i:T[now]){\n            if(i==prev)continue;\n\
     \            siz+=dfs(i,now);\n        }\n        siz_t[now]=siz;\n        return\
@@ -96,31 +72,30 @@ data:
     \ && siz_t[i]>ma){\n                ma=siz_t[i],ma_idx=i;\n            }\n   \
     \     }\n        if(ma_idx==-1)return;\n        dfs2(ma_idx,now,false);\n\n  \
     \      for(int i:T[now]){\n            if(i!=ma_idx && i!=prev)dfs2(i,now,true);\n\
-    \        }\n    }\n    HeavyLightDecomposition(UnweightedGraph &T):T(T),sg(SegmentTree<S,op,e>(T.size())){\n\
-    \        N=HeavyLightDecomposition::T.size();\n        parent.resize(N);\n   \
-    \     siz_t.resize(N);\n        depth.resize(N);\n        shallow.resize(N);\n\
-    \        rev_hld.resize(N);\n        dfs(0,-1);\n        dfs2(0,-1,1);\n    }\n\
-    \n    std::vector<std::pair<int,int>> q(int u,int v){\n        std::vector<std::pair<int,int>>\
+    \        }\n    }\n    HeavyLightDecomposition(UnweightedGraph &T):T(T){\n   \
+    \     N=HeavyLightDecomposition::T.size();\n        parent.resize(N);\n      \
+    \  siz_t.resize(N);\n        depth.resize(N);\n        shallow.resize(N);\n  \
+    \      rev_hld.resize(N);\n        dfs(0,-1);\n        dfs2(0,-1,1);\n    }\n\n\
+    \    std::vector<std::pair<int,int>> q(int u,int v){\n        std::vector<std::pair<int,int>>\
     \ ret;\n        while(shallow[u]!=shallow[v]){\n            if(depth[shallow[u]]<=depth[shallow[v]]){\n\
     \                ret.push_back({rev_hld[shallow[v]],rev_hld[v]});\n          \
     \      v=parent[shallow[v]];\n            }else{\n                ret.push_back({rev_hld[shallow[u]],rev_hld[u]});\n\
     \                u=parent[shallow[u]];\n            }\n        }\n        ret.push_back({std::min(rev_hld[u],rev_hld[v]),std::max(rev_hld[u],rev_hld[v])});\n\
-    \        return ret;\n    }\n\n    void set(int u,int v,S x){\n        if(parent[v]==u){\n\
-    \            sg.set(rev_hld[v],x);\n        }else{\n            sg.set(rev_hld[u],x);\n\
-    \        }\n    }\n\n    S query(int u,int v){\n        std::vector<std::pair<int,int>>\
-    \ que=q(u,v);\n        S ret=e();\n        for(int i=0;i<que.size()-1;i++){\n\
-    \            ret=op(ret,sg.prod(que[i].first,que[i].second+1));\n        }\n \
-    \       if(que.back().first!=N-1 && que.back().first!=que.back().second){\n  \
-    \          ret=op(ret,sg.prod(que.back().first+1,que.back().second+1));\n    \
-    \    }\n        return ret;\n    }\n\n    int lcu(int u,int v){\n        return\
-    \ hld[q(u,v).back().first];\n    }\n};"
+    \        return ret;\n    }\n\n    void set(int u,int v,S x,void(*f)(int,S)){\n\
+    \        if(parent[v]==u){\n            f(rev_hld[v],x);\n        }else{\n   \
+    \         f(rev_hld[u],x);\n        }\n    }\n\n    S query(int u,int v,S id,void(*f)(int,int)){\n\
+    \        std::vector<std::pair<int,int>> que=q(u,v);\n        S ret=id;\n    \
+    \    for(int i=0;i<que.size()-1;i++){\n            ret=op(ret,f(que[i].first,que[i].second+1));\n\
+    \        }\n        if(que.back().first!=N-1 && que.back().first!=que.back().second){\n\
+    \            ret=op(ret,f(que.back().first+1,que.back().second+1));\n        }\n\
+    \        return ret;\n    }\n\n    int lcu(int u,int v){\n        return hld[q(u,v).back().first];\n\
+    \    }\n};"
   dependsOn:
   - graph/graph-template.hpp
-  - segment-tree/segment-tree.hpp
   isVerificationFile: false
   path: tree/heavy-light-decomposition.hpp
   requiredBy: []
-  timestamp: '2023-04-06 21:49:44-07:00'
+  timestamp: '2023-04-07 05:47:06-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo/hld-lcu.test.cpp
