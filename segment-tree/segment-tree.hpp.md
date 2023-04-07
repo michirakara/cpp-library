@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: tree/heavy-light-decomposition.hpp
+    title: tree/heavy-light-decomposition.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/segment-tree.test.cpp
     title: verify/aoj/segment-tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo/hld-lcu.test.cpp
+    title: verify/yosupo/hld-lcu.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -53,10 +59,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: segment-tree/segment-tree.hpp
-  requiredBy: []
+  requiredBy:
+  - tree/heavy-light-decomposition.hpp
   timestamp: '2023-03-20 07:52:06-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/yosupo/hld-lcu.test.cpp
   - verify/aoj/segment-tree.test.cpp
 documentation_of: segment-tree/segment-tree.hpp
 layout: document

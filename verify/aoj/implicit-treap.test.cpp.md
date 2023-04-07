@@ -28,7 +28,7 @@ data:
     \ ? t->acc : e();\n    }\n\n    void update(Tree t){\n        if(t){\n       \
     \     t->cnt=1+cnt(t->l)+cnt(t->r);\n            t->acc=op(t->val,op(acc(t->l),acc(t->r)));\n\
     \        }\n    }\n\n    void pushdown(Tree t){\n        if(t && t->rev){\n  \
-    \          t->rev=false;\n            swap(t->l,t->r);\n            if(t->l)t->l->rev^=1;\n\
+    \          t->rev=false;\n            std::swap(t->l,t->r);\n            if(t->l)t->l->rev^=1;\n\
     \            if(t->r)t->r->rev^=1;\n        }\n        if(t && t->lazy!=id()){\n\
     \            if(t->l){\n                t->l->lazy=composition(t->l->lazy,t->lazy);\n\
     \                t->l->acc=mapping(t->lazy,t->l->acc);\n            }\n      \
@@ -58,7 +58,7 @@ data:
     \        merge(t,t1,t2);\n    }\n\n    void rotate(Tree t,int l,int m,int r){\n\
     \        reverse(t,l,r);\n        reverse(t,l,l+r-m);\n        reverse(t,l+r-m,r);\n\
     \    }\n\n    void dump(Tree t) {\n        if (!t) return;\n        pushdown(t);\n\
-    \        dump(t->l);\n        cout << t->val << \" \";\n        dump(t->r);\n\
+    \        dump(t->l);\n        std::cout << t->val << \" \";\n        dump(t->r);\n\
     \    }\n\npublic:\n    ImplicitTreap() {}\n    ImplicitTreap(std::vector<T> as){\n\
     \        std::reverse(as.begin(),as.end());\n        for(T a:as){\n          \
     \  insert(0,a);\n        }\n    }\n\n    void insert(int pos,T val){\n       \
@@ -73,13 +73,13 @@ data:
     \        return prod(root,l,r);\n    }\n\n    void apply(int l,int r,F x){\n \
     \       apply(root,l,r,x);\n    }\n\n    void reverse(int l,int r){\n        reverse(root,l,r);\n\
     \    }\n\n    void rotate(int l,int m,int r){\n        rotate(root,l,m,r);\n \
-    \   }\n\n    void dump(){\n        dump(root);cout<<endl;\n    }\n};\n#line 7\
-    \ \"verify/aoj/implicit-treap.test.cpp\"\n\nusing T = long long;\nusing F = long\
-    \ long;\n\nconst T INF = 8e18;\nconst F ID = 8e18;\n\nT op(T a, T b){ return std::min(a,\
-    \ b); }\nT e(){ return INF; }\nT mapping(F f, T x){ return (f == ID ? x : f);\
-    \ }\nF composition(F f, F g){ return g==ID ? f : g; }\nF id(){ return ID; }\n\n\
-    int main(){\n    int n,q;\n    cin>>n>>q;\n    \n    vector<long long> a(n);\n\
-    \    for(int i=0;i<n;i++){\n        cin>>a[i];\n    }\n\n    ImplicitTreap<T,op,e,F,mapping,composition,id>\
+    \   }\n\n    void dump(){\n        dump(root);std::cout<<std::endl;\n    }\n};\n\
+    #line 7 \"verify/aoj/implicit-treap.test.cpp\"\n\nusing T = long long;\nusing\
+    \ F = long long;\n\nconst T INF = 8e18;\nconst F ID = 8e18;\n\nT op(T a, T b){\
+    \ return std::min(a, b); }\nT e(){ return INF; }\nT mapping(F f, T x){ return\
+    \ (f == ID ? x : f); }\nF composition(F f, F g){ return g==ID ? f : g; }\nF id(){\
+    \ return ID; }\n\nint main(){\n    int n,q;\n    cin>>n>>q;\n    \n    vector<long\
+    \ long> a(n);\n    for(int i=0;i<n;i++){\n        cin>>a[i];\n    }\n\n    ImplicitTreap<T,op,e,F,mapping,composition,id>\
     \ set(a);\n    while(q--){\n        long long x,y,z;\n        cin>>x>>y>>z;\n\
     \        if(x==0){\n            set.rotate(y,z,z+1);\n        }else if(x==1){\n\
     \            cout<<set.prod(y,z+1)<<endl;\n        }else{\n            set.apply(y,y+1,z);\n\
@@ -100,7 +100,7 @@ data:
   isVerificationFile: true
   path: verify/aoj/implicit-treap.test.cpp
   requiredBy: []
-  timestamp: '2023-03-19 19:39:12-07:00'
+  timestamp: '2023-04-06 15:53:44-07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/implicit-treap.test.cpp

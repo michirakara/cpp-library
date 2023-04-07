@@ -5,10 +5,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/heavy-light-decomposition.hpp
+    title: tree/heavy-light-decomposition.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/dijkstra.test.cpp
     title: verify/aoj/dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo/hld-lcu.test.cpp
+    title: verify/yosupo/hld-lcu.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,9 +56,11 @@ data:
   path: graph/graph-template.hpp
   requiredBy:
   - graph/dijkstra.hpp
+  - tree/heavy-light-decomposition.hpp
   timestamp: '2023-03-24 23:12:28-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/yosupo/hld-lcu.test.cpp
   - verify/aoj/dijkstra.test.cpp
 documentation_of: graph/graph-template.hpp
 layout: document

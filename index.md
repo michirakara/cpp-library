@@ -43,6 +43,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash.hpp
       title: string/rolling-hash.hpp
+  - name: tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/heavy-light-decomposition.hpp
+      title: tree/heavy-light-decomposition.hpp
   - name: union-find
     pages:
     - icon: ':heavy_check_mark:'
@@ -68,6 +73,9 @@ data:
       title: verify/aoj/segment-tree.test.cpp
   - name: verify/yosupo
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/yosupo/hld-lcu.test.cpp
+      title: verify/yosupo/hld-lcu.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo/treap-multiset_priority.test.cpp
       title: verify/yosupo/treap-multiset_priority.test.cpp
