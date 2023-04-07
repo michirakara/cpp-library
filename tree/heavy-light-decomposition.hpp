@@ -65,7 +65,7 @@ struct HeavyLightDecomposition{
         return ret;
     }
 
-    void set(int u,int v,S x,void(*f)(int,S)){
+    void set(int u,int v,S x,std::function<void(int,int)> f){
         if(parent[v]==u){
             f(rev_hld[v],x);
         }else{
@@ -73,7 +73,7 @@ struct HeavyLightDecomposition{
         }
     }
 
-    S query(int u,int v,S id,S(*f)(int,int)){
+    S query(int u,int v,S id,std::function<S(int,int)> f,std::function<S(S,S)> op){
         std::vector<std::pair<int,int>> que=q(u,v);
         S ret=id;
         for(int i=0;i<que.size()-1;i++){
