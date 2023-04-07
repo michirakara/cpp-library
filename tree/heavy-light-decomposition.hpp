@@ -73,7 +73,7 @@ struct HeavyLightDecomposition{
         }
     }
 
-    S query(int u,int v,S id,void(*f)(int,int)){
+    S query(int u,int v,S id,S(*f)(int,int)){
         std::vector<std::pair<int,int>> que=q(u,v);
         S ret=id;
         for(int i=0;i<que.size()-1;i++){
