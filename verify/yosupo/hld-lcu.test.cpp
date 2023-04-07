@@ -16,7 +16,7 @@ int main(){
         T[tmp].push_back(i);
         T[i].push_back(tmp);
     }
-    HeavyLightDecomposition<S,op,e> HLD(T);
+    HeavyLightDecomposition<S> HLD(T);
     while(q--){
         int u,v;cin>>u>>v;
         cout<<HLD.lcu(u,v)<<endl;

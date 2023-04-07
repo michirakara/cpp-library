@@ -1,14 +1,13 @@
 #include "../graph/graph-template.hpp"
-#include "../segment-tree/segment-tree.hpp"
 
 #include<vector>
 #include<utility>
 #include<algorithm>
+#include<functional>
 
-template<class S,S(*op)(S,S),S(*e)()>
+template<class S>
 struct HeavyLightDecomposition{
     UnweightedGraph T;
-    SegmentTree<S,op,e> sg;
     int N;
     std::vector<int> parent,siz_t,depth,shallow,hld,rev_hld;
     int dfs(int now,int prev){
@@ -40,7 +39,7 @@ struct HeavyLightDecomposition{
             if(i!=ma_idx && i!=prev)dfs2(i,now,true);
         }
     }
-    HeavyLightDecomposition(UnweightedGraph &T):T(T),sg(SegmentTree<S,op,e>(T.size())){
+    HeavyLightDecomposition(UnweightedGraph &T):T(T){
         N=HeavyLightDecomposition::T.size();
         parent.resize(N);
         siz_t.resize(N);
@@ -66,22 +65,22 @@ struct HeavyLightDecomposition{
         return ret;
     }
 
-    void set(int u,int v,S x){
+    void set(int u,int v,S x,void(*f)(int,S)){
         if(parent[v]==u){
-            sg.set(rev_hld[v],x);
+            f(rev_hld[v],x);
         }else{
-            sg.set(rev_hld[u],x);
+            f(rev_hld[u],x);
         }
     }
 
-    S query(int u,int v){
+    S query(int u,int v,S id,void(*f)(int,int)){
         std::vector<std::pair<int,int>> que=q(u,v);
-        S ret=e();
+        S ret=id;
         for(int i=0;i<que.size()-1;i++){
-            ret=op(ret,sg.prod(que[i].first,que[i].second+1));
+            ret=op(ret,f(que[i].first,que[i].second+1));
         }
         if(que.back().first!=N-1 && que.back().first!=que.back().second){
-            ret=op(ret,sg.prod(que.back().first+1,que.back().second+1));
+            ret=op(ret,f(que.back().first+1,que.back().second+1));
         }
         return ret;
     }
