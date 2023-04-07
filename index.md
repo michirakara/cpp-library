@@ -47,7 +47,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: tree/heavy-light-decomposition.hpp
-      title: tree/heavy-light-decomposition.hpp
+      title: "HL\u5206\u89E3"
   - name: union-find
     pages:
     - icon: ':heavy_check_mark:'

@@ -7,7 +7,7 @@ data:
     title: graph/dijkstra.hpp
   - icon: ':heavy_check_mark:'
     path: tree/heavy-light-decomposition.hpp
-    title: tree/heavy-light-decomposition.hpp
+    title: "HL\u5206\u89E3"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/dijkstra.test.cpp
