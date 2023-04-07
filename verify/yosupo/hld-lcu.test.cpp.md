@@ -53,11 +53,11 @@ data:
     \                ret.push_back({rev_hld[shallow[v]],rev_hld[v]});\n          \
     \      v=parent[shallow[v]];\n            }else{\n                ret.push_back({rev_hld[shallow[u]],rev_hld[u]});\n\
     \                u=parent[shallow[u]];\n            }\n        }\n        ret.push_back({std::min(rev_hld[u],rev_hld[v]),std::max(rev_hld[u],rev_hld[v])});\n\
-    \        return ret;\n    }\n\n    void set(int u,int v,S x,void(*f)(int,S)){\n\
-    \        if(parent[v]==u){\n            f(rev_hld[v],x);\n        }else{\n   \
-    \         f(rev_hld[u],x);\n        }\n    }\n\n    S query(int u,int v,S id,void(*f)(int,int)){\n\
-    \        std::vector<std::pair<int,int>> que=q(u,v);\n        S ret=id;\n    \
-    \    for(int i=0;i<que.size()-1;i++){\n            ret=op(ret,f(que[i].first,que[i].second+1));\n\
+    \        return ret;\n    }\n\n    void set(int u,int v,S x,std::function<void(int,int)>\
+    \ f){\n        if(parent[v]==u){\n            f(rev_hld[v],x);\n        }else{\n\
+    \            f(rev_hld[u],x);\n        }\n    }\n\n    S query(int u,int v,S id,std::function<S(int,int)>\
+    \ f,std::function<S(S,S)> op){\n        std::vector<std::pair<int,int>> que=q(u,v);\n\
+    \        S ret=id;\n        for(int i=0;i<que.size()-1;i++){\n            ret=op(ret,f(que[i].first,que[i].second+1));\n\
     \        }\n        if(que.back().first!=N-1 && que.back().first!=que.back().second){\n\
     \            ret=op(ret,f(que.back().first+1,que.back().second+1));\n        }\n\
     \        return ret;\n    }\n\n    int lcu(int u,int v){\n        return hld[q(u,v).back().first];\n\
@@ -80,7 +80,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo/hld-lcu.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 05:47:06-07:00'
+  timestamp: '2023-04-07 06:06:13-07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo/hld-lcu.test.cpp
