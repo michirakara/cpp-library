@@ -4,6 +4,9 @@ data:
   - name: algorithm
     pages:
     - icon: ':warning:'
+      path: algorithm/doubling.hpp
+      title: algorithm/doubling.hpp
+    - icon: ':warning:'
       path: algorithm/mo-algorithm.hpp
       title: algorithm/mo-algorithm.hpp
   - name: binary-search-tree
