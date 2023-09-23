@@ -22,6 +22,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/graph-template.hpp
       title: graph/graph-template.hpp
+  - name: math
+    pages:
+    - icon: ':warning:'
+      path: math/modint.hpp
+      title: math/modint.hpp
   - name: segment-tree
     pages:
     - icon: ':heavy_check_mark:'
