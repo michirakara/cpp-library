@@ -25,6 +25,9 @@ data:
   - name: math
     pages:
     - icon: ':warning:'
+      path: math/matrix.hpp
+      title: math/matrix.hpp
+    - icon: ':warning:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: segment-tree
