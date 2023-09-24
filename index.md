@@ -77,6 +77,9 @@ data:
       path: verify/aoj/implicit-treap.test.cpp
       title: verify/aoj/implicit-treap.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aoj/matrix-fibonacci.test.cpp
+      title: verify/aoj/matrix-fibonacci.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/matrix-multiplication.test.cpp
       title: verify/aoj/matrix-multiplication.test.cpp
     - icon: ':heavy_check_mark:'

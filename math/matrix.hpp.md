@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aoj/matrix-fibonacci.test.cpp
+    title: verify/aoj/matrix-fibonacci.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj/matrix-multiplication.test.cpp
     title: verify/aoj/matrix-multiplication.test.cpp
   _isVerificationFailed: false
@@ -73,6 +76,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj/matrix-multiplication.test.cpp
+  - verify/aoj/matrix-fibonacci.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
