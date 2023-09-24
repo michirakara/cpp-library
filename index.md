@@ -24,7 +24,7 @@ data:
       title: graph/graph-template.hpp
   - name: math
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':warning:'
@@ -76,6 +76,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/implicit-treap.test.cpp
       title: verify/aoj/implicit-treap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/matrix-multiplication.test.cpp
+      title: verify/aoj/matrix-multiplication.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj/rolling-hash.test.cpp
       title: verify/aoj/rolling-hash.test.cpp

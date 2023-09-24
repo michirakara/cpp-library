@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/matrix-multiplication.test.cpp
+    title: verify/aoj/matrix-multiplication.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/matrix.hpp\"\n#include<vector>\ntemplate<class T>\n\
@@ -22,8 +25,8 @@ data:
     \                (*this)[i][j]-=other[i][j];\n            }\n        }\n     \
     \   return *this;\n    }\n\n    Matrix &operator*=(const Matrix &other){\n   \
     \     int l=height(),m=width(),n=other.width();\n        std::vector<std::vector<T>>\
-    \ ret(l,std::vector<T>(m,0));\n        for(int i=0;i<l;i++){\n            for(int\
-    \ j=0;j<m;j++){\n                for(int k=0;k<n;k++){\n                    ret[i][j]+=(*this)[i][k]*other[k][j];\n\
+    \ ret(l,std::vector<T>(n,0));\n        for(int i=0;i<l;i++){\n            for(int\
+    \ j=0;j<n;j++){\n                for(int k=0;k<m;k++){\n                    ret[i][j]+=(*this)[i][k]*other[k][j];\n\
     \                }\n            }\n        }\n        internal_matrix.swap(ret);\n\
     \        return *this;\n    }\n\n    Matrix pow(long long p){\n        //\u884C\
     \u5217\u306E\u639B\u3051\u7B97\u306E\u5358\u4F4D\u5143\u306FM[i][i]=1(0<i<N),\u305D\
@@ -49,8 +52,8 @@ data:
     \                (*this)[i][j]-=other[i][j];\n            }\n        }\n     \
     \   return *this;\n    }\n\n    Matrix &operator*=(const Matrix &other){\n   \
     \     int l=height(),m=width(),n=other.width();\n        std::vector<std::vector<T>>\
-    \ ret(l,std::vector<T>(m,0));\n        for(int i=0;i<l;i++){\n            for(int\
-    \ j=0;j<m;j++){\n                for(int k=0;k<n;k++){\n                    ret[i][j]+=(*this)[i][k]*other[k][j];\n\
+    \ ret(l,std::vector<T>(n,0));\n        for(int i=0;i<l;i++){\n            for(int\
+    \ j=0;j<n;j++){\n                for(int k=0;k<m;k++){\n                    ret[i][j]+=(*this)[i][k]*other[k][j];\n\
     \                }\n            }\n        }\n        internal_matrix.swap(ret);\n\
     \        return *this;\n    }\n\n    Matrix pow(long long p){\n        //\u884C\
     \u5217\u306E\u639B\u3051\u7B97\u306E\u5358\u4F4D\u5143\u306FM[i][i]=1(0<i<N),\u305D\
@@ -66,9 +69,10 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-09-24 11:25:10-07:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-09-24 11:37:05-07:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj/matrix-multiplication.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
