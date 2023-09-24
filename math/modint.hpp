@@ -1,8 +1,8 @@
 #include<iostream>
 #include<utility>
 
-template <int mod>
 struct modint{
+    static int mod;
     long long internal_val;
     modint():internal_val(0){}
     modint(long long val):internal_val(val>=0 ? val%mod : (mod-(-val)%mod)%mod){}
@@ -45,13 +45,12 @@ struct modint{
     }
 
     modint operator-() const {return modint(-internal_val);}
-    modint operator+() const {return modint(internal_val);}
-    modint operator+(const modint &other) const {return modint(*this)+=other;}
-    modint operator-(const modint &other) const {return modint(*this)-=other;}
-    modint operator*(const modint &other) const {return modint(*this)*=other;}
-    modint operator/(const modint &other) const {return modint(*this)/=other;}
-    bool operator==(const modint &other) const {return internal_val==other.internal_val;}
-    bool operator!=(const modint &other) const {return internal_val!=other.internal_val;}
+    modint operator+(const modint &right)const{return modint(*this)+=right;}
+    modint operator-(const modint &right)const{return modint(*this)-=right;}
+    modint operator*(const modint &right)const{return modint(*this)*=right;}
+    modint operator/(const modint &right)const{return modint(*this)/=right;}
+    bool operator==(const modint &right)const{return internal_val==right.internal_val;}
+    bool operator!=(const modint &right)const{return internal_val!=right.internal_val;}
     
     modint inv()const{
         int a=internal_val,b=mod,u=1,v=0,t;
@@ -79,9 +78,12 @@ struct modint{
     friend std::istream &operator>>(std::istream &is, modint &other){
         long long t;
         is>>t;
-        other=modint<mod>(t);
+        other=modint(t);
         return (is);
     }
 
     static int get_mod(){return mod;}
+
+    static void set_mod(int m){mod=m;}
 };
+int modint::mod=998244353;
