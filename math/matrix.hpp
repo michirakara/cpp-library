@@ -41,10 +41,10 @@ struct Matrix{
 
     Matrix &operator*=(const Matrix &other){
         int l=height(),m=width(),n=other.width();
-        std::vector<std::vector<T>> ret(l,std::vector<T>(m,0));
+        std::vector<std::vector<T>> ret(l,std::vector<T>(n,0));
         for(int i=0;i<l;i++){
-            for(int j=0;j<m;j++){
-                for(int k=0;k<n;k++){
+            for(int j=0;j<n;j++){
+                for(int k=0;k<m;k++){
                     ret[i][j]+=(*this)[i][k]*other[k][j];
                 }
             }
