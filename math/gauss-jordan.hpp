@@ -1,7 +1,7 @@
+#include "math/matrix.hpp"
 #include<vector>
 #include<cassert>
 #include<utility>
-#include<math/matrix.hpp>
 template<class T>
 struct GaussJordan{
     Matrix<T> mat;
