@@ -24,6 +24,9 @@ data:
       title: graph/graph-template.hpp
   - name: math
     pages:
+    - icon: ':warning:'
+      path: math/gauss-jordan.hpp
+      title: math/gauss-jordan.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp

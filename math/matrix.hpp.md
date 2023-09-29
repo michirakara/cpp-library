@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: math/gauss-jordan.hpp
+    title: math/gauss-jordan.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/matrix-fibonacci.test.cpp
@@ -71,12 +74,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/matrix.hpp
-  requiredBy: []
+  requiredBy:
+  - math/gauss-jordan.hpp
   timestamp: '2023-09-24 11:37:05-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/matrix-multiplication.test.cpp
   - verify/aoj/matrix-fibonacci.test.cpp
+  - verify/aoj/matrix-multiplication.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
