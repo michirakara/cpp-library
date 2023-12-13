@@ -55,13 +55,13 @@ data:
   isVerificationFile: false
   path: graph/graph-template.hpp
   requiredBy:
-  - graph/dijkstra.hpp
   - tree/heavy-light-decomposition.hpp
+  - graph/dijkstra.hpp
   timestamp: '2023-03-24 23:12:28-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/dijkstra.test.cpp
   - verify/yosupo/hld-lcu.test.cpp
+  - verify/aoj/dijkstra.test.cpp
 documentation_of: graph/graph-template.hpp
 layout: document
 redirect_from:

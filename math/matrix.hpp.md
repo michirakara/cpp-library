@@ -79,8 +79,8 @@ data:
   timestamp: '2023-09-24 11:37:05-07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/matrix-fibonacci.test.cpp
   - verify/aoj/matrix-multiplication.test.cpp
+  - verify/aoj/matrix-fibonacci.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
