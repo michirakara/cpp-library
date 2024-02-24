@@ -22,6 +22,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/graph-template.hpp
       title: graph/graph-template.hpp
+  - name: grid
+    pages:
+    - icon: ':warning:'
+      path: grid/grid.hpp
+      title: Grid
   - name: math
     pages:
     - icon: ':warning:'
